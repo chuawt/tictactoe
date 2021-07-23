@@ -39,15 +39,12 @@ There is no requirements.txt for this project.
 
 1. Download the [zipped files](https://github.com/chuawt/tictactoe/archive/refs/heads/main.zip) from the GitHub repository.
 1. Unzip the files to a local directory.
-1. (Optional) Switch to a virtual environment if you intend to do so.
 1. Run the script mentioned in the below section.
 
 
 ## Usage
-Navigate to the local directory and type:
-
-`python3 game.py` on Mac   
-`python game.py` on Windows
+In Terminal, navigate to the local directory and use command:   
+`$ python3 main.py` 
 
 
 ## Project Status

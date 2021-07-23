@@ -1,6 +1,3 @@
-from math import log
-from player import RandomComputer, Human
-
 class TicTacToe:
     def __init__(self):
         # Use a list to represent the 3x3 board
@@ -96,10 +93,3 @@ def play(game, x_player, o_player, print_game=True):
     if print_game:
         print('It\'s a tie!')
     return 0    
-
-
-if __name__ == '__main__':
-    x_player = Human()
-    y_player = Human()
-    game = TicTacToe()
-    print(play(game, x_player, y_player, print_game=True))
