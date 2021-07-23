@@ -22,7 +22,7 @@ The purpose of this project is to:
 
 
 ## Technologies Used
-- Python 3.9.1
+- Python - version 3.9.1
 
 
 ## Features
@@ -35,15 +35,19 @@ The purpose of this project is to:
 
 
 ## Setup
-What are the project requirements/dependencies? Where are they listed? A requirements.txt or a Pipfile.lock file perhaps? Where is it located?
+There is no requirements.txt for this project. 
 
-Proceed to describe how to install / setup one's local environment / get started with the project.
+1. Download the [zipped files](https://github.com/chuawt/tictactoe/archive/refs/heads/main.zip) from the GitHub repository.
+1. Unzip the files to a local directory.
+1. (Optional) Switch to a virtual environment if you intend to do so.
+1. Run the script mentioned in the below section.
 
 
 ## Usage
-Change into this directory and type:
+Navigate to the local directory and type:
 
-`python3 game.py`
+`python3 game.py` on Mac   
+`python game.py` on Windows
 
 
 ## Project Status
@@ -51,7 +55,6 @@ Project is: _in progress_.
 
 
 ## To Do
-- README Setup
 - Minimax AI
 
 
