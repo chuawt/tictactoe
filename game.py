@@ -1,3 +1,10 @@
+import time
+
+import logging
+logging.basicConfig(level=logging.INFO, 
+                    format='%(asctime)s %(levelname)s: %(message)s', 
+                    datefmt='%Y-%m-%d %H:%M:%S')
+
 class TicTacToe:
     def __init__(self):
         # Use a list to represent the 3x3 board
@@ -43,7 +50,6 @@ class TicTacToe:
                          [0,4,8], [2,4,6]]
         for seq in WIN_SEQUENCES:
             if all(self.board[idx] == player.marker for idx in seq):
-                self.current_winner = player
                 return True
         return False
         
@@ -62,8 +68,10 @@ def play(game, x_player, o_player, print_game=True):
     if print_game:
         print(game)
 
-    x_player.marker = 'x'
-    o_player.marker = 'o'
+    x_player.marker = 'X'
+    o_player.marker = 'O'
+    x_player.opponent = o_player
+    o_player.opponent = x_player
     current_player = x_player  # start with x_player
 
     while not game.game_draw():
@@ -76,20 +84,18 @@ def play(game, x_player, o_player, print_game=True):
                 print(game)
             
             # Check if current board has a winner
-            game.check_winner(current_player)
-            
-            if game.current_winner:
+            if game.check_winner(current_player):
                 if print_game:
-                     print(f'{current_player.marker} wins!')
+                    print(f'{current_player.marker} wins!')
                 return 1 if current_player == x_player else -1
 
             # Switch players
-            if current_player == x_player:
-                current_player = o_player
-            else: 
-                current_player = x_player
-    
+            current_player = current_player.opponent
+
+        # Short break to make it easier to read the printed board.
+        time.sleep(1)
+
     # Exit while loop means it is a draw game.
     if print_game:
         print('It\'s a tie!')
-    return 0    
+    return 0
