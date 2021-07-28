@@ -1,5 +1,6 @@
 # TicTacToe
-> Play a game of tic-tac-toe versus an AI based on the minimax algorithm.
+> Play a game of tic-tac-toe versus an AI based on the minimax algorithm.   
+> Live demo [_here_](https://replit.com/@ChristopherChua/083-tictactoe?embed=1#main.py) (press play button to start).
 
 
 ## Table of Contents
@@ -26,8 +27,10 @@ The purpose of this project is to:
 
 
 ## Features
-- Can play as Human vs Human, Human vs Computer, or Computer vs Computer
-- Print game can be toggled on or off.
+- Can play as:
+    - Human vs Human
+    - Human vs RandomComputer
+    - Human vs MinimaxComputer
 
 
 ## Screenshots
@@ -48,11 +51,12 @@ In Terminal, navigate to the local directory and use command:
 
 
 ## Project Status
-Project is: _in progress_.  
+Project is: _completed_.  
 
 
 ## To Do
-- Minimax AI
+Some ways to extend this project:
+- Create an AI using Reinforcement Learning.
 
 
 ## Acknowledgements
