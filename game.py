@@ -1,9 +1,5 @@
 import time
 
-import logging
-logging.basicConfig(level=logging.INFO, 
-                    format='%(asctime)s %(levelname)s: %(message)s', 
-                    datefmt='%Y-%m-%d %H:%M:%S')
 
 class TicTacToe:
     def __init__(self):
@@ -64,7 +60,7 @@ class TicTacToe:
 
 
 def play(game, x_player, o_player, print_game=True):
-    """ Returns 1 if x_player wins, -1 if o_player wins, and 0 for a tie. """
+    """ Returns 1 if x_player wins, -1 if o_player wins, and 0 for a draw. """
     if print_game:
         print(game)
 
@@ -93,9 +89,9 @@ def play(game, x_player, o_player, print_game=True):
             current_player = current_player.opponent
 
         # Short break to make it easier to read the printed board.
-        time.sleep(1)
+        time.sleep(0.8)
 
     # Exit while loop means it is a draw game.
     if print_game:
-        print('It\'s a tie!')
+        print('It\'s a draw!')
     return 0

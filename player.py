@@ -1,10 +1,5 @@
 import random
 import math
-
-import logging
-logging.basicConfig(level=logging.INFO, 
-                    format='%(asctime)s %(levelname)s: %(message)s', 
-                    datefmt='%Y-%m-%d %H:%M:%S')
                     
 
 class Player:
@@ -70,39 +65,46 @@ class MinimaxComputer(Player):
 
     
     def minimax(self, state, depth, is_max):
-
-        # Set a utility score of 10 for a win, -10 for a lose, 0 for draw.
-        # Adjust the utility score with the depth of the decision tree, 
+        """ Return a dictionary containing the best move position and its score.
+        
+        dictionary keys:
+        'score': (int) adjusted utility score of the best move for MinimaxComputer
+        'position': (int, 1-9) the best move on the tictactoe board
+        """
+        # Define terminal states.
+        # Set a utility score of 10 (max depth + 1) for a win, -10 for a lose, 0 for draw.
+        # Subtract the depth of the decision tree from the utility score 
         # to penalize positions that take longer to win.
         if state.check_winner(self):
             return {'score': 10 - depth, 'position': None}
         elif state.check_winner(self.opponent):
-            return {'score': -10 + depth, 'position': None}
+            return {'score': -(10 - depth), 'position': None}
         elif state.game_draw():
             return {'score': 0, 'position': None}
 
-        # If this is maximizer's move
+        # Initalize best move.
         if is_max:
-            best = {'score': -math.inf, 'position': None}
+            best = {'score': -math.inf, 'position': None}  # any move will have a higher score for maximizer
+            # Make all possible move for maximizer.
             for move in state.available_moves():
                 state.valid_move(move, self)
+                # Swap players and call minimax function recursively.
                 score = self.minimax(state, depth+1, is_max=False)['score']
+                # Update dictionary if current move has a higher score.
                 if score > best['score']:
                     best = {'score': score, 'position': move}
-                # Undo move
+                # Undo move.
                 state.board[move] = ''
-            return best
         else:
-            best = {'score': math.inf, 'position': None}
+            best = {'score': math.inf, 'position': None}  # any move will have a lower score for minimizer
+            # Make all possible move for minimizer.
             for move in state.available_moves():
                 state.valid_move(move, self.opponent)
+                # Swap players and call minimax function recursively.
                 score = self.minimax(state, depth+1, is_max=True)['score']
+                # Update dictionary if current move has a lower score.
                 if score < best['score']:
                     best = {'score': score, 'position': move}
-                # Undo move
+                # Undo move.
                 state.board[move] = ''
-            return best
-        
-            
-
-
+        return best
